@@ -3,7 +3,7 @@
 3:I[51077,["/Remember-Me/_next/static/chunks/057hh.qkne.vp.js","/Remember-Me/_next/static/chunks/0s480r_gmsdlc.js","/Remember-Me/_next/static/chunks/0baln_b8o7.p-.js","/Remember-Me/_next/static/chunks/0d3shmwh5_nmn.js","/Remember-Me/_next/static/chunks/0_v4w4ts1ev3b.js"],"default"]
 6:I[97367,["/Remember-Me/_next/static/chunks/057hh.qkne.vp.js","/Remember-Me/_next/static/chunks/0s480r_gmsdlc.js","/Remember-Me/_next/static/chunks/0baln_b8o7.p-.js","/Remember-Me/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{"slug":"deb-marie-coffman"},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Remember-Me/_next/static/chunks/0_v4w4ts1ev3b.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"xitXIP1bUKC25Ksz16mhY"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{"slug":"deb-marie-coffman"},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Remember-Me/_next/static/chunks/0_v4w4ts1ev3b.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"MaIJNB0h1dmdlmD4EN_q1"}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null

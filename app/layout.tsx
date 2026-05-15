@@ -41,6 +41,21 @@ const ebGaramond = EB_Garamond({
 export const metadata: Metadata = {
   title: 'Remember Me. — Digital Memorial Platform',
   description: 'A modern, collaborative digital memorial platform to honor and remember loved ones.',
+  openGraph: {
+    title: 'Remember Me.',
+    description: 'A modern, collaborative digital memorial platform to honor and remember loved ones.',
+    url: 'https://bherbstreit.github.io/Remember-Me/',
+    siteName: 'Remember Me',
+    images: [
+      {
+        url: 'https://bherbstreit.github.io/Remember-Me/logo-white-hand.svg',
+        width: 200,
+        height: 200,
+        alt: 'Remember Me Logo',
+      },
+    ],
+    type: 'website',
+  },
 }
 
 export const viewport: Viewport = {
