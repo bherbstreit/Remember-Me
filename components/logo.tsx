@@ -15,6 +15,7 @@ export function Logo({ size = 'md', showWordmark = true }: LogoProps) {
   }
 
   const { text } = sizes[size]
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
   return (
     <Link
@@ -22,7 +23,7 @@ export function Logo({ size = 'md', showWordmark = true }: LogoProps) {
       className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${text}`}
     >
       <img
-        src="/logo-white-hand.svg"
+        src={`${basePath}/logo-white-hand.svg`}
         alt="Remember Me"
         className="h-[1em] w-auto object-contain"
       />
