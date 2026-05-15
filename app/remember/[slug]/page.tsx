@@ -25,6 +25,7 @@ import { ToastAction } from '@/components/ui/toast'
 import { toast } from '@/hooks/use-toast'
 import { useMemoryContext } from '@/lib/memory-context'
 import { getFontClass, getMotifIcon, currentUser, MediaItem, Profile } from '@/lib/mock-data'
+import { generateLocalLifeStory } from '@/lib/fallback-story'
 import { cn } from '@/lib/utils'
 
 type TabId = 'life-story' | 'community' | 'gallery' | 'events'
@@ -96,20 +97,32 @@ export default function RememberProfilePage() {
         }
       }
 
-      if (!response.ok) throw new Error('Failed to generate story')
-
-      const reader = response.body?.getReader()
-      if (!reader) throw new Error('No reader available')
-
-      const decoder = new TextDecoder()
       let fullStory = ''
 
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
+      if (response.ok && response.body) {
+        const reader = response.body.getReader()
+        const decoder = new TextDecoder()
 
-        const chunk = decoder.decode(value, { stream: true })
-        fullStory += chunk
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+
+          const chunk = decoder.decode(value, { stream: true })
+          fullStory += chunk
+          setStreamingStory(fullStory)
+        }
+      } else {
+        fullStory = generateLocalLifeStory({
+          personName: currentProfile.name,
+          memories: currentProfile.memories.map(m => ({
+            authorName: m.authorName,
+            text: m.text,
+            photo: m.photo,
+            media: m.media,
+          })),
+          motifs: currentProfile.motifs,
+          existingStory: currentProfile.lifeStory,
+        })
         setStreamingStory(fullStory)
       }
 

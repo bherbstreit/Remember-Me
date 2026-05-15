@@ -8,6 +8,7 @@ import { AppShell } from '@/components/app-shell'
 import { Button } from '@/components/ui/button'
 import { profiles, currentUser } from '@/lib/mock-data'
 import { useMemoryContext } from '@/lib/memory-context'
+import { generateLocalLifeStory } from '@/lib/fallback-story'
 import { cn } from '@/lib/utils'
 
 type Step = 'choose' | 'photo' | 'note' | 'confirm'
@@ -152,22 +153,24 @@ export default function AddMemoryPage() {
         }),
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to regenerate life story')
-      }
-
-      const reader = response.body?.getReader()
-      if (!reader) {
-        throw new Error('No response stream available')
-      }
-
-      const decoder = new TextDecoder()
       let fullStory = ''
 
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        fullStory += decoder.decode(value, { stream: true })
+      if (response.ok && response.body) {
+        const reader = response.body.getReader()
+        const decoder = new TextDecoder()
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+          fullStory += decoder.decode(value, { stream: true })
+        }
+      } else {
+        fullStory = generateLocalLifeStory({
+          personName: profile.name,
+          memories: updatedMemories,
+          motifs: profile.motifs,
+          existingStory: profile.lifeStory,
+        })
       }
 
       updateLifeStory(profile.id, fullStory)
