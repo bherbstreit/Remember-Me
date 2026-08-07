@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Remember Me. Dark Theme */
+  --background: #111111;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  
+  /* Default accent colors */
+  --primary: #9B8EC4;
+  --primary-foreground: #ffffff;
+  --secondary: #E8A0B4;
+  --secondary-foreground: #111111;
+  
+  --muted: #2a2a2a;
+  --muted-foreground: #a0a0a0;
+  --accent: #9B8EC4;
+  --accent-foreground: #ffffff;
+  
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  
+  --border: #333333;
+  --input: #2a2a2a;
+  --ring: #9B8EC4;
+  
+  /* Profile accent color (overridden per profile) */
+  --profile-accent: #9B8EC4;
+  --profile-accent-glow: #9B8EC440;
+  
+  --radius: 0.75rem;
+  
+  /* Gradient colors for onboarding */
+  --gradient-start: #9B8EC4;
+  --gradient-end: #E8A0B4;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-mono: 'Geist Mono', monospace;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Profile accent color utilities */
+.profile-accent {
+  color: var(--profile-accent);
+}
+
+.profile-accent-bg {
+  background-color: var(--profile-accent);
+}
+
+.profile-accent-border {
+  border-color: var(--profile-accent);
+}
+
+.profile-accent-glow {
+  box-shadow: 0 0 20px var(--profile-accent-glow);
+}
+
+/* Candle glow animation */
+@keyframes candle-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px var(--profile-accent-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px var(--profile-accent-glow));
+  }
+}
+
+.candle-glow {
+  animation: candle-glow 2s ease-in-out infinite;
+}
+
+/* Gradient background for onboarding */
+.gradient-onboarding {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+/* Font utilities for profile name fonts */
+.font-cormorant {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-dancing {
+  font-family: var(--font-dancing), cursive;
+}
+
+.font-eb-garamond {
+  font-family: var(--font-eb-garamond), Georgia, serif;
+}
+
+/* Hide scrollbar for horizontal scroll sections */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
